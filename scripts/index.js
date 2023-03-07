@@ -1,0 +1,1 @@
+generarCards('CardsIndex', data.events) 

@@ -1,0 +1,1 @@
+generarCards('CardsUpcomingE', upcomingEvents);

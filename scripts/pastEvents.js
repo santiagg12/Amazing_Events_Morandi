@@ -1,0 +1,1 @@
+generarCards('CardsPastE', pastEvents);

@@ -1,75 +1,117 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Lato', sans-serif;
-    
-}
-
-
-li{display: flex;
-    align-items: end;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
 
 }
-#yy{padding: 3rem;
-}
-#imgd{
-    margin-left: -1rem;
-}
-main{
-min-height: 60vh;
-}
-input
 
-label{
-    background-color: rgb(199, 187, 187);
+li {
+  display: flex;
+  align-items: end;
+}
+
+#yy {
+  padding: 3rem;
+}
+
+#imgd {
+  margin-left: -1rem;
+}
+
+input label {
+  background-color: rgb(199, 187, 187);
 }
 
 table {
-    border-collapse: collapse;
-    width: 100%;
-   
-  }
+  border-collapse: collapse;
+  width: 100%;
 
-  th {
-    background-color: #333;
-    color: white;
-    font-weight: bold;
-    padding: 8px;
-    text-align: left;
-    width: 33.10%;
-    
-    
-  }
-
-  td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-    width: 33.33%;
-    
-  }
-
-  tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  footer{
-    background-color: rgb(141, 161, 161);
-    margin-bottom: 0;
-  }
-  
-  #boton{
-    color: rgb(39, 39, 185);
-  }
-#logo1,#logo2, #logo3 {
-  width: 19rem;
-  color:rgb(39, 39, 185);
 }
-.btn-primary{
+
+th {
+  background-color: #333;
+  color: white;
+  font-weight: bold;
+  padding: 8px;
+  text-align: left;
+  width: 33.10%;
+}
+
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  width: 33.33%;
+
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+footer {
+  background-color: rgb(141, 161, 161);
+  margin-bottom: 0;
+}
+
+#boton {
+  color: rgb(39, 39, 185);
+}
+
+#logo1, #logo2, #logo3 {
+  color: rgb(39, 39, 185);
+}
+
+.nav i {
+  font-size: 24px;
+  /* Cambie el valor de la fuente según lo desee */
+}
+
+.btn-primary {
   margin-left: 3rem;
 }
-#submit{
 
-padding-left: 2rem;
-padding-right: 2rem;
+#submit {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.card-img, .card-img-bottom, .card-img-top {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  transition: 0.5s;
+}
+
+.card {
+  transition: 0.5s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  -o-transform: scale(1.05);
+}
+
+.card-footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+small.text-muted {
+  color: rgb(39, 39, 185) !important;
+  font-size: 17px;
+}
+
+#cont1, #cont2, #cont3, #cont4, #cont5, #cont6 {
+  max-width: 1324px !important;
+}
+
+#contactmain {
+  margin-bottom: 158px !important;
 }
