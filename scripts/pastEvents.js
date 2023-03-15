@@ -1,4 +1,4 @@
-let div = document.getElementById("container-cards-pastEvents")
+let div = document.getElementById("CardsPastE")
 let events = data.events
 div.innerHTML = ``
 
