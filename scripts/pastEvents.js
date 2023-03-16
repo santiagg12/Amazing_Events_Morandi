@@ -1,50 +1,74 @@
-let div = document.getElementById("CardsPastE")
-let events = data.events
-div.innerHTML = ``
+let events = data.events;
+let div = document.getElementById("CardsPastE");
+let categoryConteiner = document.getElementById("form");
+const searchBar = document.getElementById("search-bar");
+let categorias = (Array.from (new Set(events.map(elemento => elemento.category))));
 
+categorias.forEach((element) => {
+  categoryConteiner.innerHTML += `
+    <div class="form-check form-check-inline ">
+      <label class="form-check-label"" for="${element}">${element}</label>
+      <input class="form-check-input border-danger" type="checkbox" name="category" value="${element}" id="${element}">
+    </div>
+  `;
+});
 
-let oldEvents = events.filter(function(events){
-  return events.date < data.currentDate
-})
+function filterPastEvents(events) {
+  const currentDate = new Date(data.currentDate);
+  const pastEvents = events.filter(event => new Date(event.date) < currentDate);
+  return pastEvents;
+}
 
-console.log(oldEvents)
+function addList(array){
+  div.innerHTML=``;  
+  let arrayEvents=``; 
+  array.forEach((element) => {
+    arrayEvents += `
+      <div class="col">
+        <div class="card h-100">
+          <img src="${element.image}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">${element.name}</h5>
+            <p class="card-text">${element.description}</p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted"> $ ${element.price} </small>
+            <a href="./details.html?id=${element._id}" class="btn btn-primary">View more</a>
+          </div>
+        </div>
+      </div>`;
+  });
+  div.innerHTML = arrayEvents;
+}
 
-   let categoryConteiner = document.getElementById("form")
+addList(filterPastEvents(events));
 
-   let categorias = (Array.from (new Set(events.map(elemento => elemento.category))))
-   
-   categorias.forEach((element) => {
-     categoryConteiner.innerHTML += `<label class="text-white m-2" for="${element}">${element}</label>
-     <input type="checkbox" name="category" onchange="filterList('${element}')" value="${element}" id="${element}">`
-   })
-   
-   let filterCategory = []
-   
-   function addList(){
-       let arrayEvents = oldEvents.map((element) => {
-           let includeCategory = filterCategory.includes(element.category)  
-           if(!includeCategory && filterCategory.length > 0) return
-   
-            return `<div class="card card-pastEvents col-md-3 m-3">
-           <img src="${element.image}" alt="books">
-           <h2>${element.name}</h2>   
-           <p>${element.description}</p>
-           <div class="item-card">
-             <p>$${element.price}</p>
-             <a href="./details.html?id=${element._id}" class="btn btn-primary">View more</a>
-           </div>
-         </div>`
-         })
-         div.innerHTML = arrayEvents
-   }
-   addList(oldEvents)
-   
-   
-   function filterList(e){
-       let includesCategory = filterCategory.includes(e)
-       includesCategory ? filterCategory = filterCategory.filter(item => item !== e) : filterCategory.push(e)
-       addList()
-   }
+function filterList(array, valor) {
+  let nuevoArray = array.filter(elemento => elemento.name.toLowerCase().includes(valor));
+  return nuevoArray;
+}
 
+function filtrarPorCategorias(array) {
+  let checkboxes = document.querySelectorAll("input[type='checkbox']");
+  let arrayChecks = Array.from(checkboxes);
+  let arrayChecksChecked = arrayChecks.filter(check => check.checked);
+  let arrayChecksCheckedValues = arrayChecksChecked.map(checkChecked => checkChecked.value);
+  let arrayFiltrado = array.filter(elemento => arrayChecksCheckedValues.includes(elemento.category));
+  console.log(arrayFiltrado);
+  if (arrayChecksChecked.length > 0) {
+    return arrayFiltrado;
+  }
+  return array;
+}
 
+searchBar.addEventListener('input', () => {
+  let filtroPorSearch = filterList(filterPastEvents(events), searchBar.value.toLowerCase());
+  let filtroPorCategorias = filtrarPorCategorias(filtroPorSearch);
+  addList(filtroPorCategorias);
+});
 
+categoryConteiner.addEventListener('change', () => {
+  let filtroPorSearch = filterList(filterPastEvents(events), searchBar.value.toLowerCase());
+  let filtroPorCategorias = filtrarPorCategorias(filtroPorSearch);
+  addList(filtroPorCategorias);
+});
