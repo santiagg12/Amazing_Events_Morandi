@@ -1,4 +1,4 @@
-events = data.events
+let events = data.events
 let div = document.getElementById("CardsIndex")
 let categoryConteiner = document.getElementById("form")
 const searchBar = document.getElementById("search-bar")
@@ -10,7 +10,8 @@ categorias.forEach((element) => {
         <label class="form-check-label"" for="${element}">${element}</label>
         <input class="form-check-input border-danger" type="checkbox" name="category" value="${element}" id="${element}">
       </div>
-   `
+
+  `
 })
 
 function addList(array){
@@ -71,11 +72,14 @@ categoryConteiner.addEventListener('change', () =>{
     b - un lugar
     c - funcion que pinte
       * por cada elemento del array, pintame una card en determinado lugar
+
   3 - Filtrar por nombre
     a - array - events
     b - evento que escuche lo que escribe el teclado
     c - el valor
     d - una función que filtre y devuelva otro array
+
+
   4- filtrar por categorías
     a - un array
     b - otro array con las categorias OK
@@ -84,6 +88,7 @@ categoryConteiner.addEventListener('change', () =>{
         array completo
         array de categorias filtradas
         devuelve otro array
+
 */
 
 function filtrarPorCategorias(array){
